@@ -1,5 +1,18 @@
-<%= form_with model: @post do |f| %>
-  <%= f.file_field :image %>
-  <%= f.text_field :caption %>
-  <%= f.submit '作成' %>
-<% end %>
+<div class="card m-5 w-50 mx-auto">
+  <div class="card-header">
+    <h1 class='h3'>新規投稿を作成</h1>
+  </div>
+  <div class="card-body text-center" data-controller="file">
+    <%= form_with model: @post, class: "form-group" do |f| %>
+      <p class="mb-3">
+        <%= image_tag '/placeholder.png', data: { file_target: "preview" }, style: 'height:auto;width:30%;'%>
+      </p>
+      <%= f.file_field :image, accept: "image/*", class: 'form-control mb-3', data: { file_target: "input", action: "change->file#preview" } %>
+      <%= f.text_field :caption, placeholder: "キャプションを入力", class: "form-control mb-3"%>
+      <div class="text-end">
+        <%= link_to 'キャンセル', posts_path, class: "btn btn-secondary me-2" %>
+        <%= f.submit 'シェア', class: "btn btn-primary text-start" %>
+      </div>
+    <% end %>
+  </div>
+</div>
