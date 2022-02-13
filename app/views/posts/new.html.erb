@@ -1,0 +1,5 @@
+<%= form_with model: @post do |f| %>
+  <%= f.file_field :image %>
+  <%= f.text_field :caption %>
+  <%= f.submit '作成' %>
+<% end %>
