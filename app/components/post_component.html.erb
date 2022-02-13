@@ -1,0 +1,15 @@
+<div class="card mb-3">
+  <div class="card-header d-flex align-items-center">
+    <%= image_tag '/placeholder.png', class: "img-thumbnail rounded-circle me-2", style: 'height:auto;width:50px;' %>
+    <span class="h-100">user_name</span>
+  </div>
+  <div class="card-body">
+    <%= image_tag @post.image, class: "w-100" if @post.image.attached? %>
+  </div>
+  <div class="card-footer bg-transparent">
+    <section>
+      ❤️  ✈️  🗯
+    </section>
+    <%= @post.caption %>
+  </div>
+</div>
