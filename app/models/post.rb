@@ -3,4 +3,6 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   validates :caption, length: { maximum: 191 }
+
+  belongs_to :user
 end
