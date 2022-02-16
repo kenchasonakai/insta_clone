@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(image: params[:post][:image], caption: params[:post][:caption])
+    @post = current_user.posts.build(image: params[:post][:image], caption: params[:post][:caption])
     if @post.save
       redirect_to posts_path, notice: '投稿を作成しました'
     else
