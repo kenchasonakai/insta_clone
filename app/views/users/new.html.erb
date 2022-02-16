@@ -1,0 +1,19 @@
+<div class="m-5 mx-auto w-25">
+  <div class="card">
+    <div class="card-body text-center p-5">
+      <h1 class='h4 text-black-50 mb-4'>登録して友達の写真をチェックしよう</h1>
+      <%= form_with model: @user, class: "form-group" do |f| %>
+        <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control mb-3" %>
+        <%= f.text_field :fullname, placeholder: "フルネーム", class: "form-control mb-3" %>
+        <%= f.text_field :username, placeholder: "ユーザーネーム", class: "form-control mb-3" %>
+        <%= f.password_field :password, placeholder: "パスワード", class: "form-control mb-3" %>
+        <%= f.submit '登録する', class: "btn btn-primary form-control" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card mt-3">
+    <div class="card-body text-center p-4">
+      <span>アカウントをお持ちですか？<%= link_to 'ログインする', login_path %></span>
+    </div>
+  </div>
+<div>
