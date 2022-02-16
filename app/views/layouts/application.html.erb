@@ -20,6 +20,11 @@
           <span><%= link_to "➕", new_post_path %></span>
           <span>🧭</span>
           <span>❤️ </span>
+          <% if logged_in? %>
+            <span><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></span>
+          <% else %>
+            <span><%= link_to "ログイン", login_path %></span>
+          <% end %>
         </section>
       </div>
     </nav>
