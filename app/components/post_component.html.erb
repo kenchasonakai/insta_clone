@@ -1,8 +1,8 @@
 <div class="card mb-3">
-  <div class="card-header d-flex align-items-center">
-    <%= image_tag '/placeholder.png', class: "img-thumbnail rounded-circle me-2", style: 'height:auto;width:50px;' %>
-    <span class="h-100">user_name</span>
-  </div>
+  <%= link_to user_path(username: @post.user.username), class: "card-header d-flex align-items-center link-dark", style: "text-decoration: none" do %>
+    <%= image_tag '/placeholder.png', class: "img-thumbnail rounded-circle me-3", style: 'height:auto;width:50px;' %>
+    <span class="h-100"><%= @post.user.username %></span>
+  <% end %>
   <div class="card-body">
     <%= image_tag @post.image, class: "w-100" if @post.image.attached? %>
   </div>

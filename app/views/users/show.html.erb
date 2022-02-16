@@ -1,0 +1,26 @@
+<div class="w-75 mx-auto">
+  <div class="d-flex justify-content-start m-5 align-items-center">
+    <%= image_tag '/placeholder.png', class: "img-thumbnail rounded-circle me-5", style: 'height:auto;width:200px;' %>
+    <section class="mx-5">
+      <div class="mb-3">
+        <span class="h4 me-2"><%= @user.username %></span>
+        <span><%= link_to "プロフィールを編集", edit_user_path(current_user.username), class: "btn btn-outline-secondary" if @user.eql?(current_user) %></span>
+      </div>
+      <div class="mb-3">
+        <span class="me-3">投稿<%= @user.posts.size %>件</span>
+        <span class="me-3">フォロワー</span>
+        <span class="me-3">フォロー中</span>
+      </div>
+      <div>
+        <p class="h4"><%= @user.fullname %></p>
+        <p class="me-3"><%= @user.introduction %></p>
+      </div>
+    </section>
+  </div>
+  <hr class="w-100">
+  <div class="container">
+    <div class="row">
+      <%= render MyPostComponent.with_collection(@user.posts) %>
+    </div>
+  </div>
+</div>

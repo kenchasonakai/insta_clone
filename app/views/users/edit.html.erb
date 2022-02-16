@@ -1,0 +1,50 @@
+<span><%= render ErrorsComponent.new(object: @user) %><span>
+<div class="m-5 mx-auto w-50">
+  <div class="card">
+    <div class="card-body text-center p-5">
+      <h1 class='h4 text-black-50 mb-4 col'>プロフィールを編集</h1>
+      <%= form_with model: @user do |f| %>
+        <div class="row d-flex align-items-center" data-controller="file">
+          <span class="col-3"><%= image_tag @user.icon.attached? ? @user.icon : '/placeholder.png', style: 'height:auto;width:100px;', data: { file_target: "preview" } %></span>
+          <div class='h4 mb-4 col-9 text-start'>
+            <p><%= @user.username %></p>
+            <%= f.label :icon do %>
+              <%= f.file_field :icon, accept: "image/*", class: "d-none", data: { file_target: "input", action: "change->file#preview" }%>
+              <a class="fs-6">プロフィール写真を変更</a>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <%= f.label :fullname, class: "col-3 col-form-label" %>
+          <div class="col">
+            <%= f.text_field :fullname, placeholder: "名前", class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <%= f.label :username, class: "col-3 col-form-label" %>
+          <div class="col">
+            <%= f.text_field :username, placeholder: "ユーザー名", class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <%= f.label :introduction, class: "col-3 col-form-label" %>
+          <div class="col">
+            <%= f.text_area :introduction, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <%= f.label :email, class: "col-3 col-form-label" %>
+          <div class="col">
+            <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control mb-3" %>
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <span class="col-3"></span>
+          <div class="text-start col">
+            <%= f.submit '送信する', class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<div>
