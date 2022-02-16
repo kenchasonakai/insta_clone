@@ -8,8 +8,15 @@
   </div>
   <div class="card-footer bg-transparent">
     <section>
-      ❤️  ✈️  🗯
+      <i class="bi bi-balloon-heart h4 me-3"></i>
+      <i class="bi bi-chat h4 me-3"></i>
+      <i class="bi bi-send h4"></i>
     </section>
-    <%= @post.caption %>
+    <% if @post.caption.present? %>
+      <div class="py-3">
+        <span class="me-1 h6"><%= @post.user.username%></span>
+        <span><%= @post.caption %></span>
+      </div>
+    <% end %>
   </div>
 </div>

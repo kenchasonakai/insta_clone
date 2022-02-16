@@ -11,15 +11,23 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid d-flex mx-3">
+    <nav class="navbar navbar-light bg-white border-bottom">
+      <div class="container-fluid d-flex mx-auto w-75">
         <%= link_to 'instaclone', root_path, class: "navbar-brand" %>
         <section>
-          <span>🏠</span>
-          <span>🗯</span>
-          <span><%= link_to "➕", new_post_path %></span>
-          <span>🧭</span>
-          <span>❤️ </span>
+          <span class="me-3">
+            <%= link_to  root_path, style: "text-decoration: none" do %>
+              <i class="bi bi-house-door h4 text-black"></i>
+            <% end %>
+          </span>
+          <span class="me-3"><i class="bi bi-chat-text h4"></i></span>
+          <span class="me-3">
+            <%= link_to  new_post_path, style: "text-decoration: none" do %>
+              <i class="bi bi-plus-square h4 text-black"></i>
+            <% end %>
+          </span>
+          <span class="me-3"><i class="bi bi-compass h4"></i></span>
+          <span class="me-3"><i class="bi bi-heart h4"></i></span>
           <% if logged_in? %>
             <span><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></span>
           <% else %>
