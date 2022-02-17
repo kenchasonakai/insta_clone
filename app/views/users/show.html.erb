@@ -1,6 +1,6 @@
 <div class="w-75 mx-auto">
   <div class="d-flex justify-content-start m-5 align-items-center">
-    <%= image_tag '/placeholder.png', class: "img-thumbnail rounded-circle me-5", style: 'height:auto;width:200px;' %>
+    <%= image_tag @user.icon.attached? ? @user.icon : '/placeholder.png', class: "img-thumbnail rounded-circle me-5", style: 'height:auto;width:200px;' %>
     <section class="mx-5">
       <div class="mb-3">
         <span class="h4 me-2"><%= @user.username %></span>
