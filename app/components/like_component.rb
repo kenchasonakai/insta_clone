@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class PostComponent < ViewComponent::Base
-  with_collection_parameter :post
+class LikeComponent < ViewComponent::Base
   def initialize(post:, current_user:)
     @post = post
     @current_user = current_user
