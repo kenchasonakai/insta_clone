@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 191 }
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end

@@ -5,4 +5,5 @@ class Post < ApplicationRecord
   validates :caption, length: { maximum: 191 }
 
   belongs_to :user
+  has_many :likes, dependent: :destroy
 end
