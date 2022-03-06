@@ -8,7 +8,7 @@
   </div>
   <div class="card-footer bg-transparent">
     <section>
-      <i class="bi bi-balloon-heart h4 me-3"></i>
+      <%= render LikeComponent.new(post: @post, current_user: @current_user) %>
       <i class="bi bi-chat h4 me-3"></i>
       <i class="bi bi-send h4"></i>
     </section>
