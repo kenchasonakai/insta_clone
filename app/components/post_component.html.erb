@@ -1,5 +1,5 @@
 <div class="card mb-3">
-  <%= link_to user_path(username: @post.user.username), class: "card-header d-flex align-items-center link-dark", style: "text-decoration: none" do %>
+  <%= link_to user_path(username: @post.user.username), class: "card-header d-flex align-items-center link-dark fw-bold", style: "text-decoration: none" do %>
     <%= image_tag @post.user.icon.attached? ? @post.user.icon : '/placeholder.png', class: "img-thumbnail rounded-circle me-3", style: 'height:auto;width:50px;' %>
     <span class="h-100"><%= @post.user.username %></span>
   <% end %>
@@ -12,11 +12,20 @@
       <i class="bi bi-chat h4 me-3"></i>
       <i class="bi bi-send h4"></i>
     </section>
-    <% if @post.caption.present? %>
-      <div class="py-3">
-        <span class="me-1 h6"><%= @post.user.username%></span>
-        <span><%= @post.caption %></span>
-      </div>
-    <% end %>
+    <div class="my-2">
+      <% if @post.likes.present? %>
+        <div class="py-3">
+          <span class="me-1 h6 fw-bold"><%= link_to username = @post.likes.last.user.username, user_path(username: username),class: "text-decoration-none text-black" %></span>
+          <span class="me-1 h6">、<span class="h6 fw-bold">その他</span>が「いいね！」しました</span>
+        </div>
+      <% end %>
+      <% if @post.caption.present? %>
+        <div>
+          <span class="me-1 h6"><%= @post.user.username %></span>
+          <span><%= @post.caption %></span>
+        </div>
+      <% end %>
+      <p class="text-muted mt-3"><%= @post.created_at.strftime('%-m月%-d日') %></p>
+    </div>
   </div>
 </div>
