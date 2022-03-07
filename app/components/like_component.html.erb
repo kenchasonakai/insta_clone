@@ -1,9 +1,9 @@
 <% if @current_user.present? && @post.likes.exists?(user_id: @current_user.id) %>
-  <%= link_to post_like_path(@post), data: { turbo_method: :delete } do %>
-    <i class="bi bi-balloon-heart-fill h4 me-3"></i>
+  <%= link_to post_like_path(@post), data: { turbo_method: :delete }, style: "text-decoration: none" do %>
+    <i class="bi bi-balloon-heart-fill h4 me-3 text-danger"></i>
   <% end %>
 <% else %>
-  <%= link_to post_like_path(@post), data: { turbo_method: :post } do %>
-    <i class="bi bi-balloon-heart h4 me-3"></i>
+  <%= link_to post_like_path(@post), data: { turbo_method: :post }, style: "text-decoration: none" do %>
+    <i class="bi bi-balloon-heart h4 me-3 text-black"></i>
   <% end %>
 <% end %>
