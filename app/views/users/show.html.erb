@@ -3,13 +3,21 @@
     <%= image_tag @user.icon.attached? ? @user.icon : '/placeholder.png', class: "img-thumbnail rounded-circle me-5", style: 'height:auto;width:200px;' %>
     <section class="mx-5">
       <div class="mb-3">
-        <span class="h4 me-2"><%= @user.username %></span>
-        <span><%= link_to "プロフィールを編集", edit_user_path(current_user.username), class: "btn btn-outline-secondary" if @user.eql?(current_user) %></span>
+        <span class="h4 me-3"><%= @user.username %></span>
+        <span>
+          <% if @user.eql?(current_user) %>
+            <%= link_to "プロフィールを編集", edit_user_path(current_user.username), class: "btn btn-outline-secondary" %>
+          <% elsif current_user&.following?(@user.id) %>
+            <%= link_to 'フォロー中', follow_path(@user), data: { turbo_method: :delete }, class: "btn btn-secondary btn-sm" %>
+          <% else %>
+            <%= link_to 'フォローする', follows_path(user_id: @user.id), data: { turbo_method: :post }, class: "btn btn-primary btn-sm" %>
+          <% end %>
+        </span>
       </div>
       <div class="mb-3">
         <span class="me-3">投稿<%= @user.posts.size %>件</span>
-        <span class="me-3">フォロワー</span>
-        <span class="me-3">フォロー中</span>
+        <span class="me-3">フォロワー<%= @user.followers.size %>人</span>
+        <span class="me-3">フォロー中<%= @user.followings.size %>人</span>
       </div>
       <div>
         <p class="h4"><%= @user.fullname %></p>
