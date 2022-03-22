@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    if current_user.present?
+      @posts = Post.followed_by(current_user).order(created_at: :desc)
+    else
+      @posts = Post.all.order(created_at: :desc)
+    end
   end
 
   def new

@@ -6,4 +6,6 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+
+  scope :followed_by, -> (user){ where(user_id: user.following_ids.push(user.id)) }
 end
