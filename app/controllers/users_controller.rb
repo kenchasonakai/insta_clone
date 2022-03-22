@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create show]
 
+  def index
+    @users = User.where.not(id: User.first.followings.pluck(:id).push(User.first.id))
+  end
+
   def new
     @user = User.new
   end

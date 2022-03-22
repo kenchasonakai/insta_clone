@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-between mb-3">
+  <div>
+    <%= image_tag @user.icon.attached? ? @user.icon : '/placeholder.png', class: "img-thumbnail rounded-circle me-1", style: 'height:auto;width:35px;' %>
+    <%= @user.username %>
+  </div>
+  <div>
+  <% if @current_user.following?(@user.id) %>
+    <%= link_to 'フォロー中', follow_path(@user), data: { turbo_method: :delete }, class: "btn btn-secondary btn-sm" %>
+  <% else %>
+    <%= link_to 'フォローする', follows_path(user_id: @user.id), data: { turbo_method: :post }, class: "btn btn-primary btn-sm" %>
+  <% end %>
+  </div>
+</div>

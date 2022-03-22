@@ -1,0 +1,10 @@
+<div class="m-5 mx-auto w-25">
+  <div class="card">
+    <div class="card-body">
+      <div class='h4 text-black-50 mb-4 text-center card-header bg-transparent'>
+        友達を見つけよう
+      </div>
+      <%= render UserComponent.with_collection(@users, current_user: current_user) %>
+    </div>
+  </div>
+<div>
